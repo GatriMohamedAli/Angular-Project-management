@@ -1,0 +1,14 @@
+<h3>New role</h3>
+    <hr>
+<form [formGroup]="addNewRoleForm" (ngSubmit)="Submitted()">
+    
+    
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Enter a role</label>
+        <input type="email" class="form-control" formControlName="Rolename">
+    </div>
+    
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

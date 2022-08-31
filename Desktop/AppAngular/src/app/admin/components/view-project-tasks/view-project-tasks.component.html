@@ -1,0 +1,135 @@
+<ul class="nav nav-pills p-3 bg-white mb-3 rounded-pill align-items-center">
+    <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2 active" id="all-category">
+            <i class="icon-layers mr-1"></i><span class="d-none d-md-block">All Notes</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-business"> <i class="icon-briefcase mr-1"></i><span class="d-none d-md-block">Business</span></a>
+    </li>
+    <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-social"> <i class="icon-share-alt mr-1"></i><span class="d-none d-md-block">Social</span></a>
+    </li>
+    <li class="nav-item">
+        <a href="javascript:void(0)" class="nav-link rounded-pill note-link d-flex align-items-center px-2 px-md-3 mr-0 mr-md-2" id="note-important"> <i class="icon-tag mr-1"></i><span class="d-none d-md-block">Important</span></a>
+    </li>
+    <li class="nav-item ml-auto">
+        <a href="javascript:void(0)" class="nav-link btn-primary rounded-pill d-flex align-items-center px-3" id="add-notes"> <i class="icon-note m-1"></i><span class="d-none d-md-block font-14">Add Notes</span></a>
+    </li>
+</ul>
+<div class="container">
+<table class="table table-borderless" style="width: 100%;">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 30%;">Todo</th>
+        <th scope="col" style="width: 30%;">In Progress</th>
+        <th scope="col" style="width: 30%;">Done</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+
+        <td>
+            
+                <div id="note-full-container" class="note-has-grid row" *ngFor="let task of toDoArray">
+                    <div class="col-md-4 single-note-item all-category" style="width: 100%;">
+                        <div class="card card-body">
+                            <span class="side-stick"></span>
+                            <h5 class="note-title text-truncate w-75 mb-0" data-noteheading="Book a Ticket for Movie">{{task.title}} <i class="point fa fa-circle ml-1 font-10"></i></h5>
+                            <p class="note-date font-12 text-muted">11 March 2009</p>
+                            <div class="note-content">
+                                <p class="note-inner-content text-muted" data-notecontent="">{{task.description}}</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                </div>
+                                <div>
+                                    <span class="mr-1"><i class="fa fa fa-plus" style="margin-right: 10px;" title="Assign" data-toggle="modal" data-target="#assignTaskModal" (click)="assignValues(task.id, task.title)"></i></span>
+                                    <span class="mr-1"><i class="fa fa-trash remove-note" (click)="deleteTask(task.id)" style="cursor: pointer;" title="Delete"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </td>
+        <td>
+            <div id="note-full-container" class="note-has-grid row" *ngFor="let task of assignedArray">
+                <div class="col-md-4 single-note-item all-category" style="width: 100%;">
+                    <div class="card card-body">
+                        <span class="side-stick"></span>
+                        <h5 class="note-title text-truncate w-75 mb-0" data-noteheading="Book a Ticket for Movie">{{task.title}} <i class="point fa fa-circle ml-1 font-10"></i></h5>
+                        <p class="note-date font-12 text-muted">11 March 2009</p>
+                        <div class="note-content">
+                            <p class="note-inner-content text-muted" data-notecontent="">{{task.description}}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between" >
+                            <div class="d-flex justify-content-start" >
+                                <img *ngFor="let user of task.takenBy" class="rounded-circle" style="height: 30px; width:30px" src="http://localhost:8085/api/v1/file/{{user.id}}" title="{{user.username}}">
+                            </div>
+                            <div>
+                                <span class="mr-1"><i class="fa fa fa-plus" style="margin-right: 10px;" title="Assign" data-toggle="modal" data-target="#assignTaskModal" (click)="assignValues(task.id, task.title)"></i></span>
+                                <span class="mr-1"><i class="fa fa-trash remove-note" (click)="deleteTask(task.id)" style="cursor: pointer;" title="Delete"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div id="note-full-container" class="note-has-grid row" *ngFor="let task of doneArray">
+                <div class="col-md-4 single-note-item all-category" style="width: 100%;">
+                    <div class="card card-body">
+                        <span class="side-stick"></span>
+                        <h5 class="note-title text-truncate w-75 mb-0" data-noteheading="Book a Ticket for Movie">{{task.title}} <i class="point fa fa-circle ml-1 font-10"></i></h5>
+                        <p class="note-date font-12 text-muted">11 March 2009</p>
+                        <div class="note-content">
+                            <p class="note-inner-content text-muted" data-notecontent="">{{task.description}}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between" >
+                            <div class="d-flex justify-content-start" >
+                                <img *ngFor="let user of task.takenBy" class="rounded-circle" style="height: 30px; width:30px" src="http://localhost:8085/api/v1/file/{{user.id}}" title="{{user.username}}">
+                            </div>
+                            <div>
+                                <span class="mr-1"><i class="fa fa fa-plus" style="margin-right: 10px;" title="Assign"></i></span>
+                                <span class="mr-1"><i class="fa fa-trash remove-note" (click)="deleteTask(task.id)" style="cursor: pointer;" title="Delete"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="assignTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Assign task.</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="assignTaskForm">
+                <label for="exampleInputEmail1" class="form-label">Task title:</label>
+                <input type="email" class="form-control" formControlName="title" readonly>
+                <label for="exampleInputEmail1" class="form-label" style="margin: 5px;">User:</label>
+                <select class="form-select" formControlName="username" id="username">
+                    <option *ngFor="let user of listUsers; let i = index" [value]="user.username">
+                    {{user.name}}
+                    </option>
+                </select>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" (click)="assign()">Assign</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

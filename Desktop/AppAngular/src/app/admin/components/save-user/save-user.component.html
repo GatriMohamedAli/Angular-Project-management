@@ -1,0 +1,35 @@
+<h3>New user</h3>
+    <hr>
+<form [formGroup]="saveUserForm" (ngSubmit)="Submitted()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Username</label>
+      <input type="email" class="form-control" formControlName="Username">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input type="email" class="form-control" formControlName="Username">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="Name">
+    </div>
+    <label for="cars">Choose user's role.:</label>
+
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Super Admin</label>
+    </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+      <label class="form-check-label" for="flexSwitchCheckChecked">Admin</label>
+    </div>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" >
+      <label class="form-check-label" for="flexSwitchCheckDisabled">Manager</label>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

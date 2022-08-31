@@ -1,0 +1,37 @@
+<h3>Grant role to user</h3>
+    <hr>
+<form [formGroup]="revokeForm">
+    
+    <label>Select a user:</label>
+    
+        <select class="form-select" formControlName="username" id="username">
+            <option *ngFor="let user of listUser; let i = index" [value]="user.username">
+            {{user.username}}
+            </option>
+        </select>
+    
+      <label>Select a role:</label>
+      <select class="form-select" formControlName="roleName" id="rolename">
+        <option *ngFor="let role of listRoles; let i = index" [value]="role.roleName">
+            <ng-container *ngIf="role.roleName=='ROLE_ADMIN'">
+                Admin
+              </ng-container>
+              <ng-container *ngIf="role.roleName=='ROLE_USER'">
+                User
+              </ng-container>
+              <ng-container *ngIf="role.roleName=='ROLE_MANAGER'">
+                Manager
+              </ng-container>
+              <ng-container *ngIf="role.roleName=='ROLE_SUPER_ADMIN'">
+                Super admin
+              </ng-container>
+        </option>
+      </select>
+    
+    
+      <p><em>Grant: is to grant user a role, you need to fill both fields to successfully give them permissions.</em></p>
+      <p><em>Add: is to add a completely new role, you need to select a role field only.</em></p>
+
+
+    <button class="btn btn-primary" (click)="revoke()">Grant</button>
+  </form>

@@ -1,0 +1,50 @@
+<h3 style="margin: 10px;">List users</h3>
+    <hr>
+<!-- <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Name</th>
+        <th scope="col">Roles</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of listUser">
+          <th scope="row">1</th>
+          <td>{{ user.username }}</td>
+          <td>{{user.name}}</td>
+          <td>
+            <ng-container *ngFor="let roles of user.roles">
+              <ng-container *ngIf="roles.roleName=='ROLE_ADMIN'">
+                ADMIN
+              </ng-container>
+              <ng-container *ngIf="roles.roleName=='ROLE_USER'">
+                USER
+              </ng-container>
+            </ng-container>
+          </td>
+        </tr>
+      
+    </tbody>
+  </table> -->
+  <div class="d-flex ">
+    <ng-container *ngFor="let user of listUser">
+      <div *ngFor="let role of user.roles">
+        {{role.roleName}}
+      </div>
+      <!-- http://envato.jayasankarkr.in/code/profile/assets/img/profile-4.jpg -->
+  <div class="profile-card-4 text-center "><img src="http://localhost:8085/api/v1/file/{{user.id}}" class="img img-responsive" style="object-fit: cover;">
+    <div class="profile-content">
+        <div class="profile-name">{{user.username}}
+            <p>@{{user.name}}</p>
+        </div>
+        <div class="profile-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</div>
+        <div class="col">
+            <button class="btn btn-primary" style="margin: 10px;">Something</button>
+            <button class="btn btn-primary">something</button>
+        </div>
+    </div>
+</div>
+</ng-container>
+</div>

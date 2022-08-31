@@ -1,0 +1,13 @@
+form {
+    padding: 30px;
+}
+select{
+    padding: 10px;
+    margin: 10px;
+}
+button{
+    margin:10px
+}
+p{
+    font-size: small;
+}

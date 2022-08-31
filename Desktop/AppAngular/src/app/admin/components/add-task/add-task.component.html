@@ -1,0 +1,51 @@
+<div class="container">
+    <h3 style="margin: 10px;">New project</h3>
+    <hr>
+    <form [formGroup]="addTaskForm" (ngSubmit)="Submitted()">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Title</label>
+          <input type="email" class="form-control" formControlName="title">
+          
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Description</label>
+          <textarea type="email" class="form-control" formControlName="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Project</label>
+            <select class="form-select" formControlName="projectIdSample" id="username">
+                <option *ngFor="let project of listProjects; let i = index" [value]="project.id">
+                  {{project.title}}
+                </option>
+              </select>
+            
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">isDone</label>
+            <select class="form-select" formControlName="isDone" id="username">
+              <option value="true">True</option>
+              <option value="false" selected>False</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">isAssigned</label>
+            <select class="form-select" formControlName="isAssigned" id="username">
+              <option value="true">True</option>
+              <option value="false" selected>False</option>
+            </select>
+            
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Taken By</label>
+            <select class="form-select" formControlName="takenBy" id="username">
+                <option *ngFor="let user of listUsers; let i = index" [value]="user.username">
+                  {{user.name}}
+                </option>
+              </select>
+              <div id="emailHelp" class="form-text">**Select user to assign this task to, or leave it empty if you didnt make up your mind yet.</div>
+
+        </div>
+             
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>

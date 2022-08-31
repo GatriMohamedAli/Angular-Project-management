@@ -1,0 +1,13 @@
+<h3 style="margin: 10px;">Project list</h3>
+    <hr>
+<div class="container d-flex justify-content-around">
+    
+    <div class="card" style="width: 18rem;" *ngFor="let project of listProject">
+        <div class="card-body">
+          <h5 class="card-title">{{project.title || "project one"}}</h5>
+          <p class="card-text">{{project.description}}</p>
+          <a [routerLink]="['/admin/project/view']" [queryParams]="{id:project.id}" class="card-link">View tasks</a>
+          <a class="card-link" style="cursor: pointer;" (click)="deleteProject(project.id)">Delete project</a>
+        </div>
+      </div>
+</div>
